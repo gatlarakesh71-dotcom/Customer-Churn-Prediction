@@ -1,0 +1,22 @@
+{
+  "input_rows": 64374,
+  "training_rows": 51499,
+  "testing_rows": 12875,
+  "features_before_encoding": 10,
+  "numeric_features": [
+    "Age",
+    "Tenure",
+    "Usage Frequency",
+    "Support Calls",
+    "Payment Delay",
+    "Total Spend",
+    "Last Interaction"
+  ],
+  "categorical_features": [
+    "Gender",
+    "Subscription Type",
+    "Contract Length"
+  ],
+  "best_model": "Random Forest",
+  "random_state": 42
+}

@@ -1,0 +1,28 @@
+Check,Rule,Status,Affected rows
+Column names,Trim leading/trailing whitespace,PASS,0
+Text fields,Trim leading/trailing whitespace,PASS,0
+Numeric fields,Convert to numeric; invalid values become missing,PASS,0
+Exact duplicate rows,Remove duplicate records,PASS,0
+Required ranges,Validate domain ranges,PASS,0
+Allowed categories,Validate categorical domains,PASS,0
+Numeric outliers,Cap values at the 1st and 99th percentiles,PASS,1260
+Rows retained,Keep records passing all checks,INFO,64374
+CustomerID,1 to inf,PASS,0
+Age,18 to 100,PASS,0
+Tenure,0 to inf,PASS,0
+Usage Frequency,0 to inf,PASS,0
+Support Calls,0 to inf,PASS,0
+Payment Delay,0 to inf,PASS,0
+Total Spend,0 to inf,PASS,0
+Last Interaction,0 to inf,PASS,0
+Churn,0 to 1,PASS,0
+Gender,"Female, Male",PASS,0
+Subscription Type,"Basic, Premium, Standard",PASS,0
+Contract Length,"Annual, Monthly, Quarterly",PASS,0
+Age,Cap to 18.00 through 65.00,PASS,0
+Tenure,Cap to 1.00 through 60.00,PASS,0
+Usage Frequency,Cap to 1.00 through 30.00,PASS,0
+Support Calls,Cap to 0.00 through 10.00,PASS,0
+Payment Delay,Cap to 0.00 through 30.00,PASS,0
+Total Spend,Cap to 109.00 through 990.00,PASS,1260
+Last Interaction,Cap to 1.00 through 30.00,PASS,0

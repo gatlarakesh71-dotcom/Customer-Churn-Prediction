@@ -1,0 +1,10 @@
+Metric,Value
+Accuracy,0.9964271844660194
+Precision,0.9957411957411958
+Recall,0.9967207738973602
+F1-score,0.9962307440183547
+ROC-AUC,0.9997373013711385
+True negatives,6750.0
+False positives,26.0
+False negatives,20.0
+True positives,6079.0
