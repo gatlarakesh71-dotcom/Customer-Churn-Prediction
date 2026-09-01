@@ -1,0 +1,16 @@
+Feature,Importance
+numeric__Payment Delay,0.4720485794342173
+numeric__Support Calls,0.16404580631116636
+numeric__Tenure,0.1072849612926288
+numeric__Usage Frequency,0.0777629556196426
+categorical__Gender_Male,0.03784983445546132
+numeric__Total Spend,0.03780183943286651
+categorical__Gender_Female,0.036171476384055684
+numeric__Age,0.031859311511706276
+categorical__Contract Length_Monthly,0.01504157117917627
+categorical__Contract Length_Annual,0.007678104313062849
+categorical__Contract Length_Quarterly,0.005629619314156612
+numeric__Last Interaction,0.0041864462667710245
+categorical__Subscription Type_Basic,0.001185373206746536
+categorical__Subscription Type_Premium,0.0007396964060245732
+categorical__Subscription Type_Standard,0.0007144248723173863

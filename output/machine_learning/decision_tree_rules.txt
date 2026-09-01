@@ -47,9 +47,9 @@
 |   |   |   |   |   |   |--- class: 0
 |   |   |   |   |   |--- categorical__Contract Length_Annual >  0.50
 |   |   |   |   |   |   |--- numeric__Usage Frequency <= 2.50
-|   |   |   |   |   |   |   |--- numeric__Total Spend <= 300.00
+|   |   |   |   |   |   |   |--- numeric__Total Spend <= 297.00
 |   |   |   |   |   |   |   |   |--- class: 1
-|   |   |   |   |   |   |   |--- numeric__Total Spend >  300.00
+|   |   |   |   |   |   |   |--- numeric__Total Spend >  297.00
 |   |   |   |   |   |   |   |   |--- class: 0
 |   |   |   |   |   |   |--- numeric__Usage Frequency >  2.50
 |   |   |   |   |   |   |   |--- class: 0
@@ -62,35 +62,38 @@
 |   |   |--- categorical__Gender_Female <= 0.50
 |   |   |   |--- numeric__Usage Frequency <= 2.50
 |   |   |   |   |--- numeric__Support Calls <= 3.50
-|   |   |   |   |   |--- categorical__Contract Length_Annual <= 0.50
-|   |   |   |   |   |   |--- numeric__Tenure <= 5.00
+|   |   |   |   |   |--- numeric__Tenure <= 8.50
+|   |   |   |   |   |   |--- categorical__Contract Length_Annual <= 0.50
 |   |   |   |   |   |   |   |--- categorical__Subscription Type_Basic <= 0.50
 |   |   |   |   |   |   |   |   |--- class: 0
 |   |   |   |   |   |   |   |--- categorical__Subscription Type_Basic >  0.50
 |   |   |   |   |   |   |   |   |--- class: 1
-|   |   |   |   |   |   |--- numeric__Tenure >  5.00
-|   |   |   |   |   |   |   |--- class: 0
-|   |   |   |   |   |--- categorical__Contract Length_Annual >  0.50
-|   |   |   |   |   |   |--- numeric__Total Spend <= 320.00
+|   |   |   |   |   |   |--- categorical__Contract Length_Annual >  0.50
 |   |   |   |   |   |   |   |--- class: 1
-|   |   |   |   |   |   |--- numeric__Total Spend >  320.00
-|   |   |   |   |   |   |   |--- numeric__Tenure <= 11.50
+|   |   |   |   |   |--- numeric__Tenure >  8.50
+|   |   |   |   |   |   |--- numeric__Total Spend <= 290.50
+|   |   |   |   |   |   |   |--- categorical__Contract Length_Annual <= 0.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- categorical__Contract Length_Annual >  0.50
 |   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- numeric__Total Spend >  290.50
+|   |   |   |   |   |   |   |--- numeric__Tenure <= 11.50
+|   |   |   |   |   |   |   |   |--- class: 0
 |   |   |   |   |   |   |   |--- numeric__Tenure >  11.50
 |   |   |   |   |   |   |   |   |--- class: 0
 |   |   |   |   |--- numeric__Support Calls >  3.50
-|   |   |   |   |   |--- numeric__Age <= 50.50
+|   |   |   |   |   |--- numeric__Age <= 51.00
 |   |   |   |   |   |   |--- categorical__Contract Length_Annual <= 0.50
-|   |   |   |   |   |   |   |--- numeric__Payment Delay <= 16.50
+|   |   |   |   |   |   |   |--- categorical__Subscription Type_Basic <= 0.50
 |   |   |   |   |   |   |   |   |--- class: 0
-|   |   |   |   |   |   |   |--- numeric__Payment Delay >  16.50
+|   |   |   |   |   |   |   |--- categorical__Subscription Type_Basic >  0.50
 |   |   |   |   |   |   |   |   |--- class: 0
 |   |   |   |   |   |   |--- categorical__Contract Length_Annual >  0.50
-|   |   |   |   |   |   |   |--- numeric__Total Spend <= 418.00
+|   |   |   |   |   |   |   |--- numeric__Total Spend <= 433.00
 |   |   |   |   |   |   |   |   |--- class: 1
-|   |   |   |   |   |   |   |--- numeric__Total Spend >  418.00
+|   |   |   |   |   |   |   |--- numeric__Total Spend >  433.00
 |   |   |   |   |   |   |   |   |--- class: 0
-|   |   |   |   |   |--- numeric__Age >  50.50
+|   |   |   |   |   |--- numeric__Age >  51.00
 |   |   |   |   |   |   |--- class: 1
 |   |   |   |--- numeric__Usage Frequency >  2.50
 |   |   |   |   |--- numeric__Usage Frequency <= 5.50
@@ -112,24 +115,24 @@
 |   |   |--- categorical__Gender_Female >  0.50
 |   |   |   |--- numeric__Payment Delay <= 20.50
 |   |   |   |   |--- numeric__Usage Frequency <= 4.50
-|   |   |   |   |   |--- numeric__Support Calls <= 3.50
-|   |   |   |   |   |   |--- numeric__Total Spend <= 225.50
-|   |   |   |   |   |   |   |--- categorical__Contract Length_Annual <= 0.50
-|   |   |   |   |   |   |   |   |--- class: 0
-|   |   |   |   |   |   |   |--- categorical__Contract Length_Annual >  0.50
+|   |   |   |   |   |--- numeric__Age <= 52.50
+|   |   |   |   |   |   |--- numeric__Tenure <= 5.50
+|   |   |   |   |   |   |   |--- numeric__Usage Frequency <= 2.50
 |   |   |   |   |   |   |   |   |--- class: 1
-|   |   |   |   |   |   |--- numeric__Total Spend >  225.50
-|   |   |   |   |   |   |   |--- numeric__Tenure <= 9.50
+|   |   |   |   |   |   |   |--- numeric__Usage Frequency >  2.50
 |   |   |   |   |   |   |   |   |--- class: 0
-|   |   |   |   |   |   |   |--- numeric__Tenure >  9.50
-|   |   |   |   |   |   |   |   |--- class: 0
-|   |   |   |   |   |--- numeric__Support Calls >  3.50
-|   |   |   |   |   |   |--- numeric__Age <= 50.50
-|   |   |   |   |   |   |   |--- numeric__Tenure <= 6.50
+|   |   |   |   |   |   |--- numeric__Tenure >  5.50
+|   |   |   |   |   |   |   |--- numeric__Total Spend <= 225.50
 |   |   |   |   |   |   |   |   |--- class: 1
-|   |   |   |   |   |   |   |--- numeric__Tenure >  6.50
+|   |   |   |   |   |   |   |--- numeric__Total Spend >  225.50
 |   |   |   |   |   |   |   |   |--- class: 0
-|   |   |   |   |   |   |--- numeric__Age >  50.50
+|   |   |   |   |   |--- numeric__Age >  52.50
+|   |   |   |   |   |   |--- numeric__Support Calls <= 3.50
+|   |   |   |   |   |   |   |--- numeric__Tenure <= 12.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |   |--- numeric__Tenure >  12.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |   |--- numeric__Support Calls >  3.50
 |   |   |   |   |   |   |   |--- class: 1
 |   |   |   |   |--- numeric__Usage Frequency >  4.50
 |   |   |   |   |   |--- numeric__Usage Frequency <= 5.50
@@ -143,18 +146,21 @@
 |   |   |   |   |   |--- numeric__Usage Frequency >  5.50
 |   |   |   |   |   |   |--- class: 0
 |   |   |   |--- numeric__Payment Delay >  20.50
-|   |   |   |   |--- numeric__Total Spend <= 500.50
+|   |   |   |   |--- numeric__Total Spend <= 501.50
 |   |   |   |   |   |--- numeric__Total Spend <= 499.50
 |   |   |   |   |   |   |--- class: 1
 |   |   |   |   |   |--- numeric__Total Spend >  499.50
-|   |   |   |   |   |   |--- class: 1
-|   |   |   |   |--- numeric__Total Spend >  500.50
+|   |   |   |   |   |   |--- numeric__Last Interaction <= 18.00
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- numeric__Last Interaction >  18.00
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |--- numeric__Total Spend >  501.50
 |   |   |   |   |   |--- categorical__Contract Length_Monthly <= 0.50
 |   |   |   |   |   |   |--- numeric__Usage Frequency <= 5.50
-|   |   |   |   |   |   |   |--- numeric__Support Calls <= 3.50
+|   |   |   |   |   |   |   |--- numeric__Age <= 51.50
 |   |   |   |   |   |   |   |   |--- class: 0
-|   |   |   |   |   |   |   |--- numeric__Support Calls >  3.50
-|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- numeric__Age >  51.50
+|   |   |   |   |   |   |   |   |--- class: 0
 |   |   |   |   |   |   |--- numeric__Usage Frequency >  5.50
 |   |   |   |   |   |   |   |--- class: 0
 |   |   |   |   |   |--- categorical__Contract Length_Monthly >  0.50
@@ -174,9 +180,15 @@
 |   |   |   |   |   |--- numeric__Usage Frequency >  5.50
 |   |   |   |   |   |   |--- class: 0
 |   |   |   |   |--- numeric__Payment Delay >  20.50
-|   |   |   |   |   |--- numeric__Total Spend <= 501.50
-|   |   |   |   |   |   |--- class: 1
-|   |   |   |   |   |--- numeric__Total Spend >  501.50
+|   |   |   |   |   |--- numeric__Total Spend <= 537.00
+|   |   |   |   |   |   |--- numeric__Total Spend <= 501.50
+|   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |--- numeric__Total Spend >  501.50
+|   |   |   |   |   |   |   |--- categorical__Contract Length_Quarterly <= 0.50
+|   |   |   |   |   |   |   |   |--- class: 1
+|   |   |   |   |   |   |   |--- categorical__Contract Length_Quarterly >  0.50
+|   |   |   |   |   |   |   |   |--- class: 0
+|   |   |   |   |   |--- numeric__Total Spend >  537.00
 |   |   |   |   |   |   |--- categorical__Contract Length_Monthly <= 0.50
 |   |   |   |   |   |   |   |--- numeric__Usage Frequency <= 4.50
 |   |   |   |   |   |   |   |   |--- class: 1
@@ -187,15 +199,15 @@
 |   |   |   |--- categorical__Gender_Male >  0.50
 |   |   |   |   |--- numeric__Usage Frequency <= 5.50
 |   |   |   |   |   |--- numeric__Age <= 50.50
-|   |   |   |   |   |   |--- numeric__Tenure <= 5.50
-|   |   |   |   |   |   |   |--- numeric__Usage Frequency <= 3.50
+|   |   |   |   |   |   |--- numeric__Usage Frequency <= 2.50
+|   |   |   |   |   |   |   |--- numeric__Tenure <= 10.50
 |   |   |   |   |   |   |   |   |--- class: 1
-|   |   |   |   |   |   |   |--- numeric__Usage Frequency >  3.50
+|   |   |   |   |   |   |   |--- numeric__Tenure >  10.50
 |   |   |   |   |   |   |   |   |--- class: 0
-|   |   |   |   |   |   |--- numeric__Tenure >  5.50
-|   |   |   |   |   |   |   |--- numeric__Usage Frequency <= 2.50
+|   |   |   |   |   |   |--- numeric__Usage Frequency >  2.50
+|   |   |   |   |   |   |   |--- numeric__Tenure <= 4.50
 |   |   |   |   |   |   |   |   |--- class: 0
-|   |   |   |   |   |   |   |--- numeric__Usage Frequency >  2.50
+|   |   |   |   |   |   |   |--- numeric__Tenure >  4.50
 |   |   |   |   |   |   |   |   |--- class: 0
 |   |   |   |   |   |--- numeric__Age >  50.50
 |   |   |   |   |   |   |--- class: 1

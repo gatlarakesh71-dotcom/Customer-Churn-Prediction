@@ -63,6 +63,7 @@ SQL_QUERY_REPORT_PDF = str(OUTPUT_DIR / "sql_queries_report.pdf")
 DECISION_TREE_MAX_DEPTH = 8
 DECISION_TREE_MIN_SAMPLES_LEAF = 5
 TEST_SIZE = 0.20
+VALIDATION_SIZE = 0.20
 RANDOM_STATE = 42
 
 # ──────────────────────────────────────────────────────────────────────────

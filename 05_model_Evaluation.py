@@ -18,7 +18,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.tree import DecisionTreeClassifier
 
-from config import DATA_CLEANED, RANDOM_STATE, TEST_SIZE
+from config import DATA_CLEANED, RANDOM_STATE, TEST_SIZE, VALIDATION_SIZE
 
 
 PROJECT_DIR = Path(__file__).resolve().parent
@@ -39,6 +39,13 @@ def build_model(model_name: str):
         test_size=TEST_SIZE,
         random_state=RANDOM_STATE,
         stratify=y,
+    )
+    X_train, X_val, y_train, y_val = train_test_split(
+        X_train,
+        y_train,
+        test_size=VALIDATION_SIZE,
+        random_state=RANDOM_STATE,
+        stratify=y_train,
     )
 
     numeric_columns = X_train.select_dtypes(include="number").columns.tolist()
@@ -79,8 +86,43 @@ def build_model(model_name: str):
     ])
 
     pipeline.fit(X_train, y_train)
+    train_predictions = pipeline.predict(X_train)
+    validation_predictions = pipeline.predict(X_val)
+    validation_probabilities = pipeline.predict_proba(X_val)[:, 1]
     predictions = pipeline.predict(X_test)
     probabilities = pipeline.predict_proba(X_test)[:, 1]
+
+    score_table = pd.DataFrame({
+        "Metric": ["Train Score", "Validation Score", "Test Score"],
+        "Accuracy": [
+            accuracy_score(y_train, train_predictions),
+            accuracy_score(y_val, validation_predictions),
+            accuracy_score(y_test, predictions),
+        ],
+        "Precision": [
+            precision_score(y_train, train_predictions, zero_division=0),
+            precision_score(y_val, validation_predictions, zero_division=0),
+            precision_score(y_test, predictions, zero_division=0),
+        ],
+        "Recall": [
+            recall_score(y_train, train_predictions, zero_division=0),
+            recall_score(y_val, validation_predictions, zero_division=0),
+            recall_score(y_test, predictions, zero_division=0),
+        ],
+        "F1_Score": [
+            f1_score(y_train, train_predictions, zero_division=0),
+            f1_score(y_val, validation_predictions, zero_division=0),
+            f1_score(y_test, predictions, zero_division=0),
+        ],
+        "ROC_AUC": [
+            roc_auc_score(y_train, pipeline.predict_proba(X_train)[:, 1]),
+            roc_auc_score(y_val, validation_probabilities),
+            roc_auc_score(y_test, probabilities),
+        ],
+    })
+
+    print(f"\n{model_name.upper()} - Training / Validation / Test Summary")
+    print(score_table.to_string(index=False))
 
     metrics = {
         "Model": model_name,
@@ -159,7 +201,7 @@ def main() -> None:
     comparison_df.to_csv(OUTPUT_DIR / "model_comparison.csv", index=False)
 
     winner = comparison_df.sort_values("F1_Score", ascending=False).iloc[0]
-    print("Model Comparison Results")
+    print("\nModel Comparison Results")
     print(comparison_df.to_string(index=False))
     print(f"\nBest model by F1-score: {winner['Model']}")
     print(f"Saved comparison results and graphs to: {OUTPUT_DIR}")

@@ -29,6 +29,7 @@ from config import (
     ML_OUTPUT_DIR,
     RANDOM_STATE,
     TEST_SIZE,
+    VALIDATION_SIZE,
 )
 
 
@@ -56,6 +57,13 @@ def main() -> None:
         test_size=TEST_SIZE,
         random_state=RANDOM_STATE,
         stratify=y,
+    )
+    X_train, X_val, y_train, y_val = train_test_split(
+        X_train,
+        y_train,
+        test_size=VALIDATION_SIZE,
+        random_state=RANDOM_STATE,
+        stratify=y_train,
     )
 
     numeric_columns = X_train.select_dtypes(include="number").columns.tolist()
@@ -85,9 +93,41 @@ def main() -> None:
     ])
     model.fit(X_train, y_train)
 
+    train_predictions = model.predict(X_train)
+    validation_predictions = model.predict(X_val)
+    validation_probabilities = model.predict_proba(X_val)[:, 1]
     predictions = model.predict(X_test)
     probabilities = model.predict_proba(X_test)[:, 1]
     matrix = confusion_matrix(y_test, predictions)
+
+    split_summary = pd.DataFrame({
+        "Split": ["Training", "Validation", "Testing"],
+        "Accuracy": [
+            accuracy_score(y_train, train_predictions),
+            accuracy_score(y_val, validation_predictions),
+            accuracy_score(y_test, predictions),
+        ],
+        "Precision": [
+            precision_score(y_train, train_predictions, zero_division=0),
+            precision_score(y_val, validation_predictions, zero_division=0),
+            precision_score(y_test, predictions, zero_division=0),
+        ],
+        "Recall": [
+            recall_score(y_train, train_predictions, zero_division=0),
+            recall_score(y_val, validation_predictions, zero_division=0),
+            recall_score(y_test, predictions, zero_division=0),
+        ],
+        "F1-score": [
+            f1_score(y_train, train_predictions, zero_division=0),
+            f1_score(y_val, validation_predictions, zero_division=0),
+            f1_score(y_test, predictions, zero_division=0),
+        ],
+        "ROC-AUC": [
+            roc_auc_score(y_train, model.predict_proba(X_train)[:, 1]),
+            roc_auc_score(y_val, validation_probabilities),
+            roc_auc_score(y_test, probabilities),
+        ],
+    })
     metrics = {
         "Metric": [
             "Accuracy",
@@ -152,9 +192,44 @@ def main() -> None:
 
     dump(model, DECISION_TREE_MODEL)
 
-    print("Decision Tree Classifier Results")
+    split_summary.to_csv(
+        OUTPUT_DIR / "decision_tree_split_summary.csv", index=False)
+
+    score_table = pd.DataFrame({
+        "Metric": ["Train Score", "Validation Score", "Test Score"],
+        "Accuracy": [
+            accuracy_score(y_train, train_predictions),
+            accuracy_score(y_val, validation_predictions),
+            accuracy_score(y_test, predictions),
+        ],
+        "Precision": [
+            precision_score(y_train, train_predictions, zero_division=0),
+            precision_score(y_val, validation_predictions, zero_division=0),
+            precision_score(y_test, predictions, zero_division=0),
+        ],
+        "Recall": [
+            recall_score(y_train, train_predictions, zero_division=0),
+            recall_score(y_val, validation_predictions, zero_division=0),
+            recall_score(y_test, predictions, zero_division=0),
+        ],
+        "F1-score": [
+            f1_score(y_train, train_predictions, zero_division=0),
+            f1_score(y_val, validation_predictions, zero_division=0),
+            f1_score(y_test, predictions, zero_division=0),
+        ],
+        "ROC-AUC": [
+            roc_auc_score(y_train, model.predict_proba(X_train)[:, 1]),
+            roc_auc_score(y_val, validation_probabilities),
+            roc_auc_score(y_test, probabilities),
+        ],
+    })
+
+    print("\nDecision Tree Classification Summary")
+    print(score_table.to_string(index=False))
+    print("\nDetailed Test Metrics")
     print(metrics_frame.to_string(index=False))
     print(f"\nTraining rows: {len(X_train):,}")
+    print(f"Validation rows: {len(X_val):,}")
     print(f"Testing rows: {len(X_test):,}")
     print(f"Saved outputs to: {OUTPUT_DIR}")
 
