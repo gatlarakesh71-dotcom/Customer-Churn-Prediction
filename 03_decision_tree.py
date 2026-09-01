@@ -5,6 +5,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 from joblib import dump
+from matplotlib.colors import ListedColormap
 from sklearn.compose import ColumnTransformer
 from sklearn.metrics import (
     accuracy_score,
@@ -161,12 +162,13 @@ def main() -> None:
         encoding="utf-8",
     )
 
+    custom_cmap = ListedColormap(["#eef6ff", "#dfeeff", "#9ecae1", "#2b6cb0"])
     display = ConfusionMatrixDisplay(
         confusion_matrix=matrix,
         display_labels=["No churn", "Churn"],
     )
-    display.plot(cmap="Blues", values_format="d")
-    plt.title("Decision Tree Confusion Matrix")
+    display.plot(cmap=custom_cmap, values_format="d")
+    plt.title("Decision Tree Confusion Matrix", fontsize=12, weight="bold")
     plt.tight_layout()
     plt.savefig(OUTPUT_DIR / "decision_tree_confusion_matrix.png", dpi=150)
     plt.close()

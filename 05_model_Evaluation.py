@@ -144,6 +144,7 @@ def save_visualizations(comparison_df: pd.DataFrame) -> None:
     fig, ax = plt.subplots(figsize=(12, 7))
     x_positions = list(range(len(chart_df)))
     bar_width = 0.15
+    metric_colors = ["#2563eb", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6"]
 
     for idx, metric in enumerate(metrics):
         offset = (idx - (len(metrics) - 1) / 2) * bar_width
@@ -153,6 +154,7 @@ def save_visualizations(comparison_df: pd.DataFrame) -> None:
             values,
             width=bar_width,
             label=metric,
+            color=metric_colors[idx],
         )
 
     ax.set_xticks(x_positions)
@@ -168,7 +170,7 @@ def save_visualizations(comparison_df: pd.DataFrame) -> None:
     fig, ax = plt.subplots(figsize=(8, 5))
     f1_scores = comparison_df["F1_Score"].tolist()
     model_names = comparison_df["Model"].tolist()
-    colors = ["#4c72b0", "#55a868"]
+    colors = ["#3b82f6", "#14b8a6"]
     bars = ax.bar(model_names, f1_scores, color=colors)
     ax.set_title("F1-Score Comparison")
     ax.set_ylabel("F1 Score")
